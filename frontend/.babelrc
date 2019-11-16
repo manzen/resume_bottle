@@ -4,15 +4,6 @@
         [
             "module-resolver",
             {
-                "root": ["./"],
-                "alias": {
-                    "components": "src/components",
-                    "reducers": "src/reducers",
-                    "store": "src/store",
-                    "types": "src/types",
-                    "utils": "src/utils",
-                    "assets": "src/assets"
-                },
                 "extensions": [".js", ".jsx", ".ts", ".tsx"]
             }
         ],

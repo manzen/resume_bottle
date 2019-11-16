@@ -5,7 +5,7 @@ const path = require('path')
 
 module.exports = withCSS({
     /* config options here*/
-    webpack(config, options) {
+    webpack(config) {
         config.resolve.extensions.push('.ts', '.tsx')
         return config
     },
