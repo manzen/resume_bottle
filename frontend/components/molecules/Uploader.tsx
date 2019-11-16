@@ -1,7 +1,12 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 
-const Uploader = () => {
+type Props = {
+    onSetFile: (bool: boolean) => void
+}
+
+const Uploader = (props: Props) => {
+    const { onSetFile } = props
     const [file, setFile] = React.useState<File | undefined>(undefined)
     const imageRef = React.useRef<HTMLImageElement | null>(null)
 
@@ -17,6 +22,7 @@ const Uploader = () => {
         reader.onload = evt => {
             if (!(evt.target && $img)) return
             $img.src = evt.target.result as string
+            onSetFile(true)
         }
 
         reader.readAsDataURL(file)
@@ -49,6 +55,7 @@ const EmptyBox = styled.div`
     align-items: center;
     width: 200px;
     height: 200px;
+    margin: 0 auto;
     border: 2px dashed #abd6f9;
     box-sizing: border-box;
 `
