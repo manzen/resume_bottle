@@ -5,6 +5,7 @@ import { Global, css } from '@emotion/core'
 import { ThemeProvider } from '@material-ui/styles'
 import { createMuiTheme } from '@material-ui/core'
 import { blue } from '@material-ui/core/colors'
+import firebase from '../../../assets/utils/firebaseApp'
 import AppHeader from '../../organisms/AppHeader'
 
 type Props = {
@@ -19,6 +20,11 @@ const Main = (props: Props) => {
             primary: blue,
         },
     })
+
+    React.useEffect(() => {
+        firebase.analytics()
+    }, [])
+
 
     return (
         <React.Fragment>
