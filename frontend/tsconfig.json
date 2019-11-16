@@ -15,12 +15,12 @@
         "jsx": "preserve",
         "baseUrl": ".",
         "paths": {
-            "components/*": ["./components/*"],
-            "reducers/*": ["./reducers/*"],
-            "store/*": ["./store/*"],
-            "types/*": ["./types/*"],
-            "utils/*": ["./utils/*"],
-            "assets/*": ["./assets/*"]
+            "components/*": ["src/components/*"],
+            "reducers/*": ["src/reducers/*"],
+            "store/*": ["src/store/*"],
+            "types/*": ["src/types/*"],
+            "utils/*": ["src/utils/*"],
+            "assets/*": ["src/assets/*"]
         }
     },
     "exclude": ["node_modules"],
