@@ -21,7 +21,7 @@ const Register = () => {
         <Wrapper>
             <Main>
                 <React.Fragment>
-                    <Headline>画像アップロード</Headline>
+                    <Headline>UPLOAD</Headline>
                     <Uploader onSetFile={handleSetFile} />
                     {isUpload && (
                         <SendButton variant="contained" color="primary" onClick={handleMoveNext}>
@@ -42,6 +42,7 @@ const Headline = styled.h1`
     font-size: 24px;
     margin: 40px auto 80px;
     text-align: center;
+    opacity: 0.87;
 `
 
 const SendButton = styled(Button)`
