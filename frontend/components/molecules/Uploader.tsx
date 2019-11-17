@@ -2,7 +2,17 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 
 type Props = {
-    onSetFile: (bool: boolean) => void
+    onSetFile: (data: string) => void
+}
+
+const imageToBase64 = (img: HTMLImageElement, mimeType: 'image/jpeg' | 'image/png') => {
+    const canvas = document.createElement('canvas')
+    canvas.width = img.width
+    canvas.height = img.height
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+    ctx.drawImage(img, 0, 0)
+    return canvas.toDataURL(mimeType)
 }
 
 const Uploader = (props: Props) => {
@@ -19,10 +29,15 @@ const Uploader = (props: Props) => {
         if (!file) return
         const $img = imageRef.current
         const reader = new FileReader()
+        console.log(file)
         reader.onload = evt => {
             if (!(evt.target && $img)) return
+            $img.onload = () => {
+                const base64Data = imageToBase64($img, 'image/jpeg')
+                if (!base64Data) return
+                onSetFile(base64Data)
+            }
             $img.src = evt.target.result as string
-            onSetFile(true)
         }
 
         reader.readAsDataURL(file)

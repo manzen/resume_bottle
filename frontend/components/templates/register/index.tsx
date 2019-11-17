@@ -2,20 +2,41 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 import { useRouter } from 'next/router'
 import { Button } from '@material-ui/core'
+import * as firebase from 'firebase'
 import Main from '../layouts/Main'
 import Uploader from '../../molecules/Uploader'
+import { axiosBase } from '../../../assets/api'
 
 const Register = () => {
-    const [isUpload, setIsUpload] = React.useState(false)
+    const [uploadData, setUploadData] = React.useState<string | undefined>(undefined)
+    const [user, setUser] = React.useState<any>(null)
     const router = useRouter()
-    const handleSetFile = (bool: boolean) => {
-        console.log(bool)
-        setIsUpload(bool)
+    const handleSetFile = (data: string) => {
+        setUploadData(data)
     }
 
     const handleMoveNext = () => {
-        router.push('/result')
+        if (!(uploadData && user)) return
+        const params = new URLSearchParams()
+        params.append('email', user.email)
+        params.append('resume', uploadData)
+        console.log(uploadData)
+        axiosBase.post('upload', params).then(res => {
+            console.log(res)
+            router.push('/result')
+        })
     }
+
+    React.useEffect(() => {
+        const unregisterAuthObserver = firebase.auth().onAuthStateChanged((user: firebase.User | null) => setUser(user))
+        return (): void => {
+            unregisterAuthObserver()
+        }
+    }, [])
+
+    React.useEffect(() => {
+        console.log(user?.email)
+    }, [user])
 
     return (
         <Wrapper>
@@ -23,7 +44,7 @@ const Register = () => {
                 <React.Fragment>
                     <Headline>UPLOAD</Headline>
                     <Uploader onSetFile={handleSetFile} />
-                    {isUpload && (
+                    {uploadData && user && (
                         <SendButton variant="contained" color="primary" onClick={handleMoveNext}>
                             おくる
                         </SendButton>
@@ -48,5 +69,5 @@ const Headline = styled.h1`
 const SendButton = styled(Button)`
     display: block;
     width: 140px;
-    margin: 40px auto; 
+    margin: 40px auto;
 `
