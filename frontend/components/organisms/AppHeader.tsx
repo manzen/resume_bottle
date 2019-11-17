@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         title: {
             flexGrow: 1,
+            paddingLeft: '2em',
             textAlign: 'center',
         },
     }),
