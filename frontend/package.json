@@ -49,6 +49,7 @@
         "module-resolver": "^1.0.0",
         "next": "^9.1.1",
         "prettier": "^1.19.1",
+        "print-js": "^1.0.63",
         "react": "^16.10.2",
         "react-docgen-typescript-loader": "^3.3.0",
         "react-dom": "^16.10.2",
