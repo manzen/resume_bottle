@@ -17,3 +17,9 @@ module ResumeBottleServer
     # the framework and any gems in your application.
   end
 end
+
+class << self
+  def credentials
+    Rails.application.credentials[Rails.env.to_sym]
+  end
+end
