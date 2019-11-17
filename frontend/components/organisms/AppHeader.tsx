@@ -23,10 +23,6 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const AppHeader = () => {
     const classes = useStyles()
-    const [auth, setAuth] = React.useState(false)
-
-    console.log(setAuth)
-
     return (
         <div className={classes.root}>
             <AppBar position="static">
@@ -38,7 +34,6 @@ const AppHeader = () => {
                         <IconWrapper>
                             <AccountCircle />
                         </IconWrapper>
-                        {auth ? <p>Logout</p> : <p>Login</p>}
                     </LoginWrapper>
                 </Toolbar>
             </AppBar>

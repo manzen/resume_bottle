@@ -11,7 +11,7 @@ const Home = () => {
     const router = useRouter()
     const uiConfig = {
         signInFlow: 'popup',
-        signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID, firebase.auth.EmailAuthProvider.PROVIDER_ID],
+        signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID],
         callbacks: {
             signInSuccessWithAuthResult: () => false,
         },
