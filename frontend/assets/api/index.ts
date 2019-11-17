@@ -1,7 +1,11 @@
 import axios from 'axios'
 
-const ngrokURL = 'http://1ba79a1e.ngrok.io/'
+export const ngrokURL = 'http://021f5fcf.ngrok.io/'
 
 export const axiosBase = axios.create({
     baseURL: `${ngrokURL}api/`,
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Access-Control-Allow-Origin': '*',
+    },
 })

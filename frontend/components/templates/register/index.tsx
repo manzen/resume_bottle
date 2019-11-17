@@ -5,7 +5,7 @@ import { Button } from '@material-ui/core'
 import * as firebase from 'firebase'
 import Main from '../layouts/Main'
 import Uploader from '../../molecules/Uploader'
-import { axiosBase } from '../../../assets/api'
+import {ngrokURL} from "../../../assets/api";
 
 const Register = () => {
     const [uploadData, setUploadData] = React.useState<string | undefined>(undefined)
@@ -20,10 +20,14 @@ const Register = () => {
         const params = new URLSearchParams()
         params.append('email', user.email)
         params.append('resume', uploadData)
-        console.log(uploadData)
-        axiosBase.post('upload', params).then(res => {
-            console.log(res)
-            router.push('/result')
+        fetch(`${ngrokURL}api/upload`, {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            mode: 'no-cors', // no-cors, cors, *same-origin
+            credentials: 'omit', // include, same-origin, *omit
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: params, // 本文のデータ型は "Content-Type" ヘッダーと一致する必要があります
         })
     }
 
