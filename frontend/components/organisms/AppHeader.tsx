@@ -47,7 +47,6 @@ const LoginWrapper = styled.div`
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 5em;
 `
 
 const IconWrapper = styled.div`
