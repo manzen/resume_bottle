@@ -28,7 +28,7 @@ const AppHeader = () => {
             <AppBar position="static">
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
-                        いい感じのタイトルが入る
+                        紙々のあそび選考
                     </Typography>
                     <LoginWrapper>
                         <IconWrapper>
