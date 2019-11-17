@@ -5,7 +5,7 @@ import { Button } from '@material-ui/core'
 import * as firebase from 'firebase'
 import Main from '../layouts/Main'
 import Uploader from '../../molecules/Uploader'
-import {ngrokURL} from "../../../assets/api";
+import { ngrokURL } from '../../../assets/api'
 
 const Register = () => {
     const [uploadData, setUploadData] = React.useState<string | undefined>(undefined)
@@ -29,6 +29,9 @@ const Register = () => {
             },
             body: params, // 本文のデータ型は "Content-Type" ヘッダーと一致する必要があります
         })
+        setTimeout(() => {
+            router.push('/result')
+        }, 3000)
     }
 
     React.useEffect(() => {
