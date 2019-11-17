@@ -1,11 +1,6 @@
 import * as React from 'react'
-import styled from '@emotion/styled'
+import Home from '../components/templates/home'
 
-const Home = () => <Title>Hello, world!</Title>
+const PageHome = () => <Home />
 
-export default Home
-
-const Title = styled.h1`
-    font-size: 20px;
-    color: red;
-`
+export default PageHome
